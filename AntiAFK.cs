@@ -15,6 +15,7 @@ namespace AntiAFK
             PlayerConnected += OnPlayerConnect;
             Call("SetDvarIfUninitialized", "sv_banTick", "24");
             Call("SetDvar", "sv_kickBanTime", 3600f);
+            Call("SetDvarIfUninitialized", "sv_ban_by_ip", true);
             banHitCount = Call<int>("GetDvarInt", "sv_banTick");
 
             if (banHitCount < 24 || banHitCount > 50)
@@ -25,7 +26,8 @@ namespace AntiAFK
         {
             Vector3 oldPos = player.Origin;
             int hitCount = 0;
-            quitList.Remove(player.HWID);
+            if (quitList.Remove(player.HWID))
+                Log.Write(LogLevel.Info, $"{player.Name} Joined back after quitting within the allotted time frame. He will not be banned.");
 
             player.OnInterval(5000, delegate (Entity ent)
             {
