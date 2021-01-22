@@ -33,9 +33,9 @@ namespace AntiAFK
             {
                 if (ent.GetField<string>("sessionteam") == "axis")
                 {
-                    Vector3 newPos = player.Origin;
+                    Vector3 newPos = ent.Origin;
 
-                    if (oldPos.DistanceTo2D(player.Origin) < 450f)
+                    if (oldPos.DistanceTo2D(ent.Origin) < 450f)
                     {
                         hitCount++;
                         if (hitCount % 5 == 0)
@@ -48,16 +48,16 @@ namespace AntiAFK
                     else
                         hitCount = 0;
 
-                    oldPos = player.Origin;
+                    oldPos = ent.Origin;
                 }
 
                 return true;
             });
         }
 
-        public void TempBan(Entity player) => Utilities.ExecuteCommand($"tempbanclient {player.EntRef} You have ^1Rage ^0Quitted ^7Stay Banned for 1 Hour");
+        public void TempBan(Entity player) => Utilities.ExecuteCommand($"tempbanclient {player.EntRef} You have been ^1AFK ^7for too long. Stay Banned for 1 Hour");
 
-        public void TempBan(string playerName) => Utilities.ExecuteCommand($"tempban {playerName} You have ^1Rage ^0Quitted ^7Stay Banned for 1 Hour");
+        public void TempBan(string playerName) => Utilities.ExecuteCommand($"tempban {playerName} You have been ^1AFK ^7for too long. Stay Banned for 1 Hour");
 
         public void PushFoward(Entity player)
         {
