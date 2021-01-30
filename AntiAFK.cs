@@ -14,7 +14,7 @@ namespace AntiAFK
         {
             PlayerConnected += OnPlayerConnect;
             Call("SetDvarIfUninitialized", "sv_banTick", "24");
-            Call("SetDvar", "sv_kickBanTime", 3600f);
+            Call("SetDvar", "sv_kickBanTime", 3600f * 2f);
             Call("SetDvarIfUninitialized", "sv_ban_by_ip", true);
             banHitCount = Call<int>("GetDvarInt", "sv_banTick");
 
