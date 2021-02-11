@@ -1,7 +1,7 @@
 ﻿using InfinityScript;
 using System;
 using System.IO;
-using static InfinityScript.Function;
+using static InfinityScript.GSCFunctions;
 
 namespace AntiAFK
 {
@@ -38,10 +38,10 @@ namespace AntiAFK
 
         public string GetDirPath()
         {
-            string result = Call<string>("GetDvar", "sv_path_for_ban_dbs");
+            string result = GetDvar("sv_path_for_ban_dbs");
             if (string.IsNullOrWhiteSpace(result))
             {
-                Log.Write(LogLevel.Warning, "\"sv_path_for_ban_dbs\" dvar is null or contains white spaces. What did you do? Modify the server.cfg to fix this!");
+                InfinityScript.Log.Write(LogLevel.Warning, "\"sv_path_for_ban_dbs\" dvar is null or contains white spaces. What did you do? Modify the server.cfg to fix this!");
                 result = "BanDB";
             }
 
