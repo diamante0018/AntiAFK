@@ -115,6 +115,7 @@ namespace AntiAFK
                         InfinityScript.Log.Write(LogLevel.Info, $"Attempting to ban {entName} for rage quitting.");
                         //writeBan.Info("{0}=TEMP({1})", hwid, EpochTime().ToString("X").ToUpperInvariant());
                         GameLogger.Write("AFK;{0};{1};{2}", hwid, entRef, entName);
+                        quitList.Remove(hwid);
                     }
                 });
             }
