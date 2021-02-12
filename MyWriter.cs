@@ -31,8 +31,6 @@ namespace AntiAFK
             using (StreamWriter sw = File.AppendText(currentPath))
             {
                 sw.WriteLine(string.Format(format, args));
-                sw.Flush();
-                sw.Close();
             }
         }
 
